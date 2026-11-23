@@ -1,13 +1,15 @@
 import json
-from sgp4.api import Satrec
+
 from sgp4 import omm
+from sgp4.api import Satrec
 
 
 def load_catalogue(path):
     sats = []
     ids = []
     failures = []
-    records = json.load(open(path))
+    with open(path) as f:
+    	records = json.load(f)
     for rec in records:
         try:
             sat = Satrec()

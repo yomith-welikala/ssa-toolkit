@@ -1,6 +1,6 @@
 import json
-from ssa_toolkit.catalogue import load_catalogue
 
+from ssa_toolkit.catalogue import load_catalogue
 
 good = {
     "OBJECT_NAME": "DEMO",
@@ -51,7 +51,7 @@ def write_catalogue(tmp_path):
 
 def test_counts(tmp_path):
     f = write_catalogue(tmp_path)
-    sats, ids, failures = load_catalogue(f)
+    sats, _ids, failures = load_catalogue(f)
     assert len(sats) == 1
     assert len(failures) == 3
     assert len(sats) + len(failures) == 4
@@ -59,7 +59,7 @@ def test_counts(tmp_path):
 
 def test_failure_reasons(tmp_path):
     f = write_catalogue(tmp_path)
-    sats, ids, failures = load_catalogue(f)
+    _sats, ids, failures = load_catalogue(f)
     reason = dict(failures)
     assert ids == [25544]
     assert set(reason) == {2, 3, 4}
