@@ -9,7 +9,7 @@ def load_catalogue(path):
     ids = []
     failures = []
     with open(path) as f:
-    	records = json.load(f)
+        records = json.load(f)
     for rec in records:
         try:
             sat = Satrec()
